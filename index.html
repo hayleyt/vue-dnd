@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <script src="./vue.js"></script>
+    </head>
+
+    <style scoped>
+        .drop-zone {
+          background-color: #eee;
+          margin-bottom: 10px;
+          height:200px;
+          padding: 10px;
+        }
+      
+        .drag-el {
+          background-color: #fff;
+          margin-bottom: 10px;
+          padding: 5px;
+          height: 20px;
+        }
+        
+      </style>
+
+    <body>
+        <div id="app">
+            <div>
+                <div
+                class='drop-zone'
+                @drop='onDrop($event, 1)'
+                @dragover.prevent
+                @dragenter.prevent>
+                    <div 
+                    v-for='item in listOne' 
+                    :key='item.title' 
+                    class='drag-el'
+                    draggable
+                    @dragstart='startDrag($event, item)'>
+                        {{ item.title }}
+                    </div>
+                </div>
+
+                <div
+                class='drop-zone'
+                @drop='onDrop($event, 2)'
+                @dragover.prevent
+                @dragenter.prevent>
+                    <div 
+                    v-for='item in listTwo' 
+                    :key='item.title' 
+                    class='drag-el'
+                    draggable
+                    @dragstart='startDrag($event, item)'>
+                        {{ item.title }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="index.js"></script>
+    </body>
+</html>
